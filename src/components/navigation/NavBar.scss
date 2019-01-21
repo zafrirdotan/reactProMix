@@ -1,0 +1,21 @@
+.app-header {
+  width: 100%;
+  background: #fff;
+  height: 70px;
+  border-bottom: 1px solid #dadada;
+  display: flex;
+  align-items: center;
+  .app-title {
+    font-size: 30px;
+    padding: 5px;
+  }
+  .app-nav-bar {
+    width: 100%;
+    display: flex;
+
+    .app-link {
+      padding: 5px 20px;
+      text-align: center;
+    }
+  }
+}

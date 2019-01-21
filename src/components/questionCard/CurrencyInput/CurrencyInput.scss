@@ -1,0 +1,10 @@
+.input-container{
+    margin: 60px auto;
+    width: 200px;
+    .numberInput{
+       
+        span {
+            content: "\20AA";
+          }
+    }
+}

@@ -1,0 +1,37 @@
+.introduction {
+    width: 730px;
+    margin: auto;
+    text-align: center;
+    .slogan-container {
+      padding: 30px;
+      .app-name {
+        font-size: 38px;
+        padding: 10px;
+        text-align: center;
+      }
+      .slogan {
+        text-align: center;
+        padding: 10px;
+        font-size: 60px;
+      }
+    }
+    .button-container {
+      padding: 85px;
+      .action-button {
+        font-size: 25px;
+      }
+    }
+    .descriptive-slogan-container {
+      font-size: 25px;
+      text-align: center;
+      padding: 10px;
+      .descriptive-slogan {
+      }
+    }
+  }
+  .interdiction-video {
+    width: 600px;
+    height: 400px;
+    margin: 50px auto;
+  }
+  

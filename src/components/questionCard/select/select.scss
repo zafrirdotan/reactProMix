@@ -1,0 +1,17 @@
+.select-box{
+    width: 400px;
+    margin: auto;
+    .select-button-container{
+       padding: 10px;
+       text-align: center;
+        .select-button{
+            height: 50px;
+            width: 100%;
+
+        }
+        .selected{
+            border-color: #3f51b5;
+            border-width: 2px;
+        }
+    }
+}
