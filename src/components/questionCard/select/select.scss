@@ -1,6 +1,9 @@
 .select-box{
-    width: 400px;
+    width: 50%;
     margin: auto;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
     .select-button-container{
        padding: 10px;
        text-align: center;

@@ -37,6 +37,7 @@ export default class TimeInput extends Component {
         <TextField
           id="numberInput"
           root="numberInput"
+          className="time-input"
           type="number"
           margin="normal"
           variant="outlined"

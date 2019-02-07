@@ -36,6 +36,7 @@ export default class CurrencyInput extends Component {
         <TextField
           id="numberInput"
           root="numberInput"
+          className="currency-input"
           // type="number"
           margin="normal"
           variant="outlined"

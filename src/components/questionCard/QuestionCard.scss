@@ -1,7 +1,12 @@
-.card{
-    .text{
-        text-align: center;
-        font-size: 28px;
-        direction: rtl;
+.card {
+  .text {
+    text-align: center;
+    font-size: 2rem;
+    height: 90px;
+    direction: rtl;
+    padding: 15px;
+    @media only screen and (max-width: 600px) {
+      font-size: 1.6rem;
     }
+  }
 }

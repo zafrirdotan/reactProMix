@@ -1,10 +1,31 @@
-.question-card-container{
-    width: 700px;
-    height: 700px;
-    margin: auto;
-    .buttons{
-        display: flex;
-        justify-content: space-evenly;
-        
+.question-card-container {
+  width: 65%;
+  margin: auto;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+  .question-card {
+    padding: 90px 30px 50px;
+    height: 300px;
+    @media only screen and (max-width: 600px) {
+      padding: 0;
+      height: 350px;    
     }
+    .submit-container {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .submit-box {
+        text-align: center;
+        .submit-button {
+          width: 50%;
+        }
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }

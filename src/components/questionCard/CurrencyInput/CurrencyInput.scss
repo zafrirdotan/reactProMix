@@ -1,10 +1,11 @@
-.input-container{
-    margin: 60px auto;
-    width: 200px;
-    .numberInput{
-       
-        span {
-            content: "\20AA";
-          }
+.input-container {
+  width: 50%;
+  margin: 40px auto;
+  text-align: center;
+  .currency-input {
+    width: 50%;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
     }
+  }
 }

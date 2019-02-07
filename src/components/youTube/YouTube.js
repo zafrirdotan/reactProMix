@@ -23,6 +23,7 @@ export default class YouTube extends Component {
           height="100%"
           src={videoSrc}
           frameBorder="0"
+          allowFullScreen="allowfullscreen"
         />
     //   </div>
     );

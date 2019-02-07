@@ -49,31 +49,43 @@ export default class ApplicationPage extends Component {
   render() {
     return (
       <div className="question-card-container">
-        {this.state.questions.map((question, index) => {
-          if (index === this.state.questionNumber) {
-            return (
-              <QuestionCard
-                key={question._id}
-                onValueChange={this.handelValueChange.bind(this)}
-                Question={question}
-              />
-            );
-          }
-          return null;
-        })}
-        <div>
+        <div className="question-card">
+          {this.state.questions.map((question, index) => {
+            if (index === this.state.questionNumber) {
+              return (
+                <QuestionCard
+                  key={question._id}
+                  onValueChange={this.handelValueChange.bind(this)}
+                  Question={question}
+                />
+              );
+            }
+            return null;
+          })}
           {this.state.questionNumber === this.state.questions.length && (
-            <Button onClick={this.submitApplication}> בצע </Button>
+            <div className="submit-container">
+              <div className="submit-box">
+                <h1>שלח את את השאלון</h1>
+                <Button
+                  className="submit-button"
+                  variant="outlined"
+                  color="primary"
+                  onClick={this.submitApplication}
+                >
+                  בצע
+                </Button>
+              </div>
+            </div>
           )}
-        </div>
-        <div className="buttons">
-          {this.state.questionNumber !== this.state.questions.length && (
-            <Button onClick={this.setNextQuestion}>קדימה</Button>
-          )}
-          {this.state.questionNumber !== 0 && (
-            <Button onClick={this.goBack}>אחורה</Button>
-          )}
-        </div>
+          </div>
+          <div className="buttons">
+            {this.state.questionNumber !== this.state.questions.length && (
+              <Button onClick={this.setNextQuestion}>קדימה</Button>
+            )}
+            {this.state.questionNumber !== 0 && (
+              <Button onClick={this.goBack}>אחורה</Button>
+            )}
+          </div>
       </div>
     );
   }

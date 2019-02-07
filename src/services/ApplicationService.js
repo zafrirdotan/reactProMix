@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const questions = [
   {
     _id: 'q1',
@@ -97,6 +99,11 @@ function getValueByName(name) {
 const sendApplication = answeredQuestions => {
   let application = formatApplication(answeredQuestions);
   console.log('application:', application);
+
+  axios.post(`http://localhost:3000/api/Application`,application ) 
+  .then(function (response) {
+    console.log(response);
+  });
   
 };
 
