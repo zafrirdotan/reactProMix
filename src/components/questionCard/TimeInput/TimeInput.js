@@ -6,11 +6,15 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import './TimeInput.scss';
 
 export default class TimeInput extends Component {
-  state = {
-    value: 12,
-    max: 100,
-    min: 12
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 12,
+      max: 100,
+      min: 12,
+    };
+    this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
+  }
 
   componentDidMount() {
     if (this.props.value) {
@@ -25,6 +29,9 @@ export default class TimeInput extends Component {
   handleInputChange = event => {
     this.updateState(+event.target.value);
   };
+  handleOnKeyDown() {
+    this.props.onselectChange(this.state.value, true);
+  }
 
   updateState(value) {
     this.setState({ value });
@@ -45,6 +52,8 @@ export default class TimeInput extends Component {
           inputProps={{ min: this.state.min, max: this.state.max }}
           value={this.state.value}
           onChange={this.handleInputChange}
+          onKeyDown={this.handleOnKeyDown}
+          autoFocus={true}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">חודשים</InputAdornment>

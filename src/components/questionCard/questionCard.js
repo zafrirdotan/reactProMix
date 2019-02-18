@@ -13,12 +13,12 @@ export default class QuestionCard extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
-  handleValueChange(e) {
+  handleValueChange(e, isNextQuestion) {
     let question = this.props.Question;
     question.value = e;
-    this.props.onValueChange(question);
+    this.props.onValueChange(question, isNextQuestion); 
   }
-
+  
   getInputByType(type) {
     switch (type) {
       case 'select':

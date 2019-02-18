@@ -4,7 +4,7 @@ import './select.scss';
 export default class Select extends Component {
 
   select(e) {
-    this.props.onselectChange(e);
+    this.props.onselectChange(e, true);
   }
 
   render() {

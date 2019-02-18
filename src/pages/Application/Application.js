@@ -37,11 +37,14 @@ export default class ApplicationPage extends Component {
     }));
   }
 
-  handelValueChange(e) {
-    let newQuestions = e;
+  handelValueChange(question, isNextQuestion) {
+    let newQuestions = question;
     let questions = [...this.state.questions];
     questions[this.state.questionNumber] = newQuestions;
     this.setState({ questions: questions });
+    if(isNextQuestion){
+      this.setNextQuestion();
+    }
     // console.log('ev:', e);
   }
 
@@ -82,11 +85,11 @@ export default class ApplicationPage extends Component {
           )}
         </div>
         <div className="buttons">
-          {this.state.questionNumber !== this.state.questions.length && (
+          {/* {this.state.questionNumber !== this.state.questions.length && (
             <Button className="nav-button" onClick={this.setNextQuestion}>
               קדימה
             </Button>
-          )}
+          )} */}
           {this.state.questionNumber !== 0 && (
             <Button className="nav-button" onClick={this.goBack}>
               אחורה

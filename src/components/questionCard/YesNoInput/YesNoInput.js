@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import './YesNoInput.scss';
 export default class YesNoInput extends Component {
   select(e) {
-    this.props.onselectChange(e);
+    this.props.onselectChange(e, true);
   }
 
   render() {

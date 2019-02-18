@@ -12,6 +12,7 @@ function NumberFormatCustom(props) {
       getInputRef={inputRef}
       autoComplete="off"
       type="tel"
+      autoFocus={true}
       onValueChange={values => {
         onChange({
           target: {
@@ -28,7 +29,11 @@ function NumberFormatCustom(props) {
 
 export default class CurrencyInput extends Component {
   handleInputChange = event => {
-    this.props.onselectChange(event.target.value);
+    if(event.keyCode == 13){
+      this.props.onselectChange(event.target.value, true);
+    }else{
+      this.props.onselectChange(event.target.value);
+    }
   };
 
   render() {
@@ -38,12 +43,14 @@ export default class CurrencyInput extends Component {
           id="numberInput"
           root="numberInput"
           className="currency-input"
+          
           // type="number"
           margin="normal"
           variant="outlined"
           // fullWidth="true"
           value={this.props.value}
-          onChange={this.handleInputChange}
+          // onChange={this.handleInputChange}
+          onKeyDown={this.handleInputChange}
           InputProps={{
             inputComponent: NumberFormatCustom,
           }}
