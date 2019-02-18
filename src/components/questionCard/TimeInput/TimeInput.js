@@ -13,7 +13,6 @@ export default class TimeInput extends Component {
       max: 100,
       min: 12,
     };
-    this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
   }
 
   componentDidMount() {
@@ -29,8 +28,11 @@ export default class TimeInput extends Component {
   handleInputChange = event => {
     this.updateState(+event.target.value);
   };
-  handleOnKeyDown() {
-    this.props.onselectChange(this.state.value, true);
+
+  handleOnKeyDown = event => {
+    if(event.keyCode == 13){
+      this.props.onselectChange(this.state.value, true);
+    }
   }
 
   updateState(value) {
