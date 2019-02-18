@@ -1,15 +1,17 @@
 .question-card-container {
-  width: 65%;
+  width: 55%;
   margin: auto;
   @media only screen and (max-width: 600px) {
     width: 100%;
   }
+  
   .question-card {
-    padding: 90px 30px 50px;
-    height: 300px;
+    padding: 40px;
+    @media only screen and (min-width: 600px) {
+      height: 260px;
+    }
     @media only screen and (max-width: 600px) {
-      padding: 0;
-      height: 350px;    
+      padding: 0;  
     }
     .submit-container {
       height: 300px;
@@ -27,5 +29,10 @@
   .buttons {
     display: flex;
     justify-content: space-evenly;
+    .nav-button{
+      padding: 5px;
+      height: 50px;
+      width: 120px;
+    }
   }
 }

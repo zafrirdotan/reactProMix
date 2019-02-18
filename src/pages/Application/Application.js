@@ -8,18 +8,21 @@ export default class ApplicationPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: ApplicationService.getQuesting(),
+      questions: [...ApplicationService.getQuesting()],
       questionNumber: 0,
       currentQuestion: ApplicationService.getQuesting()[0],
     };
+    this.baseState = this.state;
     this.setNextQuestion = this.setNextQuestion.bind(this);
     this.goBack = this.goBack.bind(this);
     this.submitApplication = this.submitApplication.bind(this);
     // this.handelValueChange = this.handelValueChange.bind(this);
   }
 
-  componentDidMount() {}
-
+  componentWillUnmount() {
+   ApplicationService.reset();
+  }
+  
   setNextQuestion() {
     this.setState(state => ({
       questionNumber: state.questionNumber + 1,
@@ -77,15 +80,19 @@ export default class ApplicationPage extends Component {
               </div>
             </div>
           )}
-          </div>
-          <div className="buttons">
-            {this.state.questionNumber !== this.state.questions.length && (
-              <Button onClick={this.setNextQuestion}>קדימה</Button>
-            )}
-            {this.state.questionNumber !== 0 && (
-              <Button onClick={this.goBack}>אחורה</Button>
-            )}
-          </div>
+        </div>
+        <div className="buttons">
+          {this.state.questionNumber !== this.state.questions.length && (
+            <Button className="nav-button" onClick={this.setNextQuestion}>
+              קדימה
+            </Button>
+          )}
+          {this.state.questionNumber !== 0 && (
+            <Button className="nav-button" onClick={this.goBack}>
+              אחורה
+            </Button>
+          )}
+        </div>
       </div>
     );
   }

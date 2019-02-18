@@ -11,6 +11,7 @@ function NumberFormatCustom(props) {
       {...other}
       getInputRef={inputRef}
       autoComplete="off"
+      type="tel"
       onValueChange={values => {
         onChange({
           target: {

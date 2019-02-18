@@ -128,10 +128,17 @@ const formatApplication = questions => {
 };
 
 const getQuesting = () => {
-  return questions;
+  return [...questions];
 };
+
+const reset = ()=>{
+  questions.forEach(q=>{
+    q.value = null;
+  })
+}
 
 export default {
   getQuesting,
   sendApplication,
+  reset,
 };
