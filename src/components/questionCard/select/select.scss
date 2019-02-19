@@ -3,13 +3,14 @@
   width: 350px;
   @media only screen and (max-width: 600px) {
     width: 100%;
+    display: flex;
   }
 
   .select-button-container {
     padding: 10px;
     text-align: center;
     @media only screen and (max-width: 600px) {
-      padding: 10px 30px;
+      // padding: 10px 30px;
     }
     .select-button {
       height: 50px;

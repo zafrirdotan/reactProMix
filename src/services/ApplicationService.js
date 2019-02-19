@@ -13,6 +13,7 @@ const questions = [
       { name: 'דירה חליפית', key: 1 },
       { name: 'דירה במחיר למשתכן', key: 2 },
     ],
+    advice: 'חשוב לנו לדעת על מנת שבלאהלא',
   },
   {
     _id: 'q2',
@@ -22,6 +23,7 @@ const questions = [
     type: 'currency',
     placeholder: '100,000',
     currency: 'ILS',
+    advice: '1כדי שבלא בלא ת בלא בלאת בלא',
   },
   {
     _id: 'q3',
@@ -30,6 +32,7 @@ const questions = [
     text: 'מה שווי ההלווה שאתה מעוניין בה?',
     type: 'currency',
     currency: 'ILS',
+    advice: '2כדי שבלא בלא ת בלא בלאת בלא',
   },
   {
     _id: 'q4',
@@ -37,6 +40,7 @@ const questions = [
     inputType: 'Time',
     text: 'תוך כמה זמן אתה רוצה להחזיר את ההלווה?',
     type: 'time-months',
+    advice: '3כדי שבלא בלא ת בלא בלאת בלא',
   },
   {
     _id: 'q5',
@@ -91,7 +95,6 @@ const application = {
   fixMonthlyRepayment: null,
 };
 
-
 function getValueByName(name) {
   return questions.find(question => question.formName === name).value;
 }
@@ -100,11 +103,11 @@ const sendApplication = answeredQuestions => {
   let application = formatApplication(answeredQuestions);
   console.log('application:', application);
 
-  axios.post(`http://localhost:3000/api/Application`,application ) 
-  .then(function (response) {
-    console.log(response);
-  });
-  
+  axios
+    .post(`http://localhost:3000/api/Application`, application)
+    .then(function(response) {
+      console.log(response);
+    });
 };
 
 const formatApplication = questions => {
@@ -131,11 +134,11 @@ const getQuesting = () => {
   return [...questions];
 };
 
-const reset = ()=>{
-  questions.forEach(q=>{
+const reset = () => {
+  questions.forEach(q => {
     q.value = null;
-  })
-}
+  });
+};
 
 export default {
   getQuesting,

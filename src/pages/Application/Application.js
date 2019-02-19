@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import ApplicationService from '../../services/ApplicationService';
 import QuestionCard from '../../components/questionCard/questionCard';
+import SidePopup from '../../components/SidePopup/SidePopup';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import SwipeableViews from 'react-swipeable-views';
+
 import './Application.scss';
 
 export default class ApplicationPage extends Component {
@@ -83,32 +85,38 @@ export default class ApplicationPage extends Component {
       </div>
     );
 
+    const backButton = (
+      <Button
+        className="nav-button"
+        onClick={this.goBack}
+        size="medium"
+        variant="outlined"
+        color="primary"
+        // disableFocusRipple="true"
+        // disableRipple="true"
+      >
+        <Icon size="medium" color="primary">
+          arrow_forward
+        </Icon>
+      </Button>
+    );
+
     return (
       <div className="question-card-container">
-        {this.state.questionNumber !== 0 && (
-          <Button
-            className="nav-button"
-            onClick={this.goBack}
-            size="medium"
-            variant="outlined"
-            color="primary"
-            disableFocusRipple="true"
-            disableRipple="true"
-          >
-            <Icon size="medium"color="primary">
-              arrow_forward
-            </Icon>
-          </Button>
-        )}
+        {this.state.questionNumber !== 0 && backButton}
         <div className="question-card">
           <SwipeableViews
             axis="x-reverse"
-            animateHeight={true}
             disabled={true}
             index={this.state.questionNumber}
             children={questionCards}
           />
         </div>
+        {this.state.questionNumber !== this.state.questions.length && (
+          <SidePopup
+            text={this.state.questions[this.state.questionNumber].advice}
+          />
+        )}
       </div>
     );
   }

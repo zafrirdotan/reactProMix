@@ -1,0 +1,25 @@
+@media only screen and (min-width: 600px) {
+  .side-popup-container {
+    height: 300px;
+    width: 200px;
+    border: 1px solid #5666be;
+    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    right: 6%;
+    top: 200px;
+    direction: rtl;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .side-popup-container {
+    direction: rtl;
+    border: 1px solid #5666be;
+    border-radius: 20px;
+    padding: 20px;
+    height: 50px;
+    width: 75%;
+    margin: auto;
+  }
+}
