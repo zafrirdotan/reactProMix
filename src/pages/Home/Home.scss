@@ -1,10 +1,10 @@
-.home-page{
+.home-page {
   width: 100%;
   .introduction {
     margin: auto;
     text-align: center;
     .slogan-container {
-      padding: 30px;
+      padding: 20px;
       .app-name {
         font-size: 2rem;
         padding: 10px;
@@ -19,9 +19,13 @@
       }
     }
     .button-container {
-      padding: 85px 10px;
+      padding: 20px;
+      color: white;
       .action-button {
         font-size: 1.5rem;
+      }
+      a {
+        text-decoration: none;
       }
     }
     .descriptive-slogan-container {
@@ -34,12 +38,17 @@
     }
   }
   .interdiction-video {
-    width: 50%;
-    @media only screen and (max-width: 600px) {
-      width: 100%;
+    .video-button {
+      width: 200px;
+      margin: auto;
+      text-align: center;
     }
-    height: 400px;
-    margin: 50px auto;
   }
 }
-  
+@media only screen and (min-width: 600px) {
+  .dialog {
+    height: 300px;
+    width: 500px;
+    overflow-y: hidden;
+  }
+}
