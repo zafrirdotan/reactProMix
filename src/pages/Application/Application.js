@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ApplicationService from '../../services/ApplicationService';
 import QuestionCard from '../../components/questionCard/questionCard';
 import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import Icon from '@material-ui/core/Icon';
+import SwipeableViews from 'react-swipeable-views';
 import './Application.scss';
 
 export default class ApplicationPage extends Component {
@@ -10,91 +13,101 @@ export default class ApplicationPage extends Component {
     this.state = {
       questions: [...ApplicationService.getQuesting()],
       questionNumber: 0,
-      currentQuestion: ApplicationService.getQuesting()[0],
     };
     this.baseState = this.state;
-    this.setNextQuestion = this.setNextQuestion.bind(this);
-    this.goBack = this.goBack.bind(this);
-    this.submitApplication = this.submitApplication.bind(this);
-    // this.handelValueChange = this.handelValueChange.bind(this);
   }
 
-  componentWillUnmount() {
-   ApplicationService.reset();
-  }
-  
-  setNextQuestion() {
+  componentWillUnmount = () => {
+    ApplicationService.reset();
+  };
+
+  setNextQuestion = () => {
     this.setState(state => ({
       questionNumber: state.questionNumber + 1,
-      currentQuestion: this.state.questions[state.questionNumber + 1],
     }));
-  }
+  };
 
-  goBack() {
+  goBack = () => {
     this.setState(state => ({
       questionNumber: state.questionNumber - 1,
-      currentQuestion: this.state.questions[state.questionNumber - 1],
     }));
-  }
+  };
 
-  handelValueChange(question, isNextQuestion) {
-    let newQuestions = question;
-    let questions = [...this.state.questions];
-    questions[this.state.questionNumber] = newQuestions;
-    this.setState({ questions: questions });
-    if(isNextQuestion){
-      this.setNextQuestion();
+  handelValueChange = (index, question, isNextQuestion) => {
+    if (index === this.state.questionNumber) {
+      let questions = this.state.questions;
+      questions[this.state.questionNumber].value = question.value;
+      this.setState({ questions: questions }, () => {
+        if (isNextQuestion) {
+          this.setNextQuestion();
+        }
+      });
     }
-    // console.log('ev:', e);
-  }
+  };
 
-  submitApplication() {
+  submitApplication = () => {
     ApplicationService.sendApplication(this.state.questions);
-  }
+  };
 
   render() {
+    const questionCards = this.state.questions.map((question, index) => {
+      if (
+        index === this.state.questionNumber ||
+        index === this.state.questionNumber - 1
+      ) {
+        return (
+          <QuestionCard
+            key={question._id}
+            onValueChange={this.handelValueChange.bind(this, index)}
+            Question={question}
+          />
+        );
+      } else {
+        return <div />;
+      }
+    });
+
+    questionCards[this.state.questions.length] = (
+      <div className="submit-container">
+        <div className="submit-box">
+          <h1>שלח את את השאלון</h1>
+          <Button
+            className="submit-button"
+            variant="outlined"
+            color="primary"
+            onClick={this.submitApplication}
+          >
+            בצע
+          </Button>
+        </div>
+      </div>
+    );
+
     return (
       <div className="question-card-container">
+        {this.state.questionNumber !== 0 && (
+          <Button
+            className="nav-button"
+            onClick={this.goBack}
+            size="medium"
+            variant="outlined"
+            color="primary"
+            disableFocusRipple="true"
+            disableRipple="true"
+          >
+            <Icon size="medium"color="primary">
+              arrow_forward
+            </Icon>
+          </Button>
+        )}
         <div className="question-card">
-          {this.state.questions.map((question, index) => {
-            if (index === this.state.questionNumber) {
-              return (
-                <QuestionCard
-                  key={question._id}
-                  onValueChange={this.handelValueChange.bind(this)}
-                  Question={question}
-                />
-              );
-            }
-            return null;
-          })}
-          {this.state.questionNumber === this.state.questions.length && (
-            <div className="submit-container">
-              <div className="submit-box">
-                <h1>שלח את את השאלון</h1>
-                <Button
-                  className="submit-button"
-                  variant="outlined"
-                  color="primary"
-                  onClick={this.submitApplication}
-                >
-                  בצע
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="buttons">
-          {/* {this.state.questionNumber !== this.state.questions.length && (
-            <Button className="nav-button" onClick={this.setNextQuestion}>
-              קדימה
-            </Button>
-          )} */}
-          {this.state.questionNumber !== 0 && (
-            <Button className="nav-button" onClick={this.goBack}>
-              אחורה
-            </Button>
-          )}
+          <SwipeableViews
+            axis="x-reverse"
+            animateHeight={true}
+            disabled={true}
+            index={this.state.questionNumber}
+            children={questionCards}
+          />
         </div>
       </div>
     );

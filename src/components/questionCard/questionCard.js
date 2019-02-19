@@ -27,7 +27,6 @@ export default class QuestionCard extends Component {
             onselectChange={this.handleValueChange}
             options={this.props.Question.options}
             selected={this.props.Question.value}
-            key={this.props.Question._id}
           />
         );
       case 'currency':
@@ -35,7 +34,6 @@ export default class QuestionCard extends Component {
           <CurrencyInput
             onselectChange={this.handleValueChange}
             value={this.props.Question.value}
-            key={this.props.Question._id}
           />
         );
       case 'Time':
@@ -62,10 +60,11 @@ export default class QuestionCard extends Component {
   render() {
     const input = this.getInputByType(this.props.Question.inputType);
     return (
-      <div className="card">
+      <div className="card" >
         <div className="text">{this.props.Question.text}</div>
         {input}
       </div>
     );
   }
 }
+

@@ -28,6 +28,7 @@ function NumberFormatCustom(props) {
 }
 
 export default class CurrencyInput extends Component {
+
   handleInputChange = event => {
     if(event.keyCode == 13){
       this.props.onselectChange(event.target.value, true);

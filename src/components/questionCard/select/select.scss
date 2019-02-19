@@ -1,21 +1,23 @@
-.select-box{
-    width: 50%;
-    margin: auto;
-    @media only screen and (max-width: 600px) {
-        width: 100%;
-      }
-    
-    .select-button-container{
-       padding: 10px;
-       text-align: center;
-        .select-button{
-            height: 50px;
-            width: 100%;
+.select-box {
+  margin: auto;
+  width: 350px;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 
-        }
-        .selected{
-            border-color: #3f51b5;
-            border-width: 2px;
-        }
+  .select-button-container {
+    padding: 10px;
+    text-align: center;
+    @media only screen and (max-width: 600px) {
+      padding: 10px 30px;
     }
+    .select-button {
+      height: 50px;
+      width: 100%;
+    }
+    .selected {
+      border-color: #3f51b5;
+      border-width: 2px;
+    }
+  }
 }
