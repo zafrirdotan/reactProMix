@@ -4,17 +4,19 @@
   @media only screen and (max-width: 600px) {
     width: 100%;
     display: flex;
+    justify-content: center;
   }
 
   .select-button-container {
     padding: 10px;
     text-align: center;
-    @media only screen and (max-width: 600px) {
-      // padding: 10px 30px;
-    }
     .select-button {
       height: 50px;
       width: 100%;
+          @media only screen and (max-width: 600px) {
+            padding: 15px;
+            height: auto;
+          }
     }
     .selected {
       border-color: #3f51b5;
