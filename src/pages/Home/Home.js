@@ -67,7 +67,6 @@ export default class HomePage extends Component {
             onClose={this.handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
-            classes="root.paperScrollPaper"
           >
             <div className="dialog">
               <YouTube video="mYFaghHyMKc" autoplay="0" rel="0" modest="1" />
