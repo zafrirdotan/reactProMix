@@ -8,6 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 
+
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +30,7 @@ export default class HomePage extends Component {
       <div className="home-page">
         <div className="introduction">
           <div className="slogan-container">
-            <div className="app-name">PROMIX</div>
+            {/* <div className="app-name">PROMIX</div> */}
             <div className="slogan">המשכנתא שלך, בדרך שלך</div>
           </div>
 
