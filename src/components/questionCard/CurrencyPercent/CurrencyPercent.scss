@@ -1,0 +1,19 @@
+.currency-percent-box {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  .percent-box {
+    width: 85px;
+    position: relative;
+    .label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: white;
+      z-index: 1;
+      font-size: 12px;
+      padding: 0px 9px;
+    }
+  }
+}

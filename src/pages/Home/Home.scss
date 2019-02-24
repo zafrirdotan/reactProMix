@@ -1,47 +1,56 @@
-.home-page {
+.home-page-container {
   width: 100%;
-  .introduction {
+  .container-1 {
     margin: auto;
     text-align: center;
-    .slogan-container {
-      padding: 20px;
-      .app-name {
-        font-size: 2rem;
-        padding: 10px;
-        text-align: center;
-      }
+    width: 70%;
+    padding: 20px;
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+      padding: 0;
+      padding-top: 15px;
+    }
+    .slogan-box {
       .slogan {
-        text-align: center;
-        font-size: 3rem;
+        font-size: 32px;
+        // padding: 10px;
         @media only screen and (max-width: 600px) {
-          font-size: 1.5rem;
+          font-size: 25px;
+          padding: 15px 10px 15px;
+          margin: auto;
+        }
+      }
+    }
+    .descriptive-box {
+      padding: 10px;
+      @media only screen and (max-width: 600px) {
+        font-size: 13px;
+        padding: 5px 10px;
+        .descriptive {
+          font-weight: 500;
+          margin: auto;
         }
       }
     }
     .button-container {
-      padding: 20px;
+      padding: 30px;
       color: white;
+
       .action-button {
         font-size: 1.5rem;
+        @media only screen and (max-width: 600px) {
+          font-size: 1.3rem;
+        }
       }
       a {
         text-decoration: none;
       }
     }
-    .descriptive-slogan-container {
-      font-size: 1.5rem;
-      text-align: center;
-      padding: 15px;
-      @media only screen and (max-width: 600px) {
-        font-size: 1.1rem;
-      }
-    }
   }
   .interdiction-video {
-    .video-button {
-      width: 200px;
-      margin: auto;
-      text-align: center;
+    padding: 20px;
+    .text {
+      padding: 5px;
     }
   }
 }

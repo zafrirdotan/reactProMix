@@ -1,22 +1,18 @@
 .select-box {
   margin: auto;
   width: 350px;
-  @media only screen and (max-width: 600px) {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
 
   .select-button-container {
     padding: 10px;
     text-align: center;
+    direction: rtl;
     .select-button {
       height: 50px;
       width: 100%;
-          @media only screen and (max-width: 600px) {
-            padding: 15px;
-            height: auto;
-          }
+      font-size: 18px;
+      .icon {
+        transform: translate(-20px)
+      }
     }
     .selected {
       border-color: #3f51b5;

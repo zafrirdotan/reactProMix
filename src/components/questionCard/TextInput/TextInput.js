@@ -3,7 +3,7 @@ import './TextInput.scss';
 
 export default class TextInput extends Component {
   handleInputChange = event => {
-    if(event.keyCode == 13){
+    if(event.keyCode === 13){
       this.props.onselectChange(event.target.value, true);
     }else{
       this.props.onselectChange(event.target.value);

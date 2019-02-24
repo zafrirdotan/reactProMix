@@ -8,7 +8,6 @@ import Icon from '@material-ui/core/Icon';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 
-
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -27,17 +26,15 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <div className="home-page">
-        <div className="introduction">
-          <div className="slogan-container">
-            {/* <div className="app-name">PROMIX</div> */}
-            <div className="slogan">המשכנתא שלך, בדרך שלך</div>
+      <div className="home-page-container">
+        <div className="container-1">
+          <div className="slogan-box">
+            <h1 className="slogan">המשכנתא שלך, בדרך שלך</h1>
           </div>
-
-          <div className="descriptive-slogan-container">
-            <span className="descriptive-slogan">
+          <div className="descriptive-box">
+            <h2 className="descriptive">
               השווה בין כל המשכנתאות בארץ וחסוך עשרות אלפי שקלים
-            </span>
+            </h2>
           </div>
           <div className="button-container">
             <Link
@@ -53,26 +50,26 @@ export default class HomePage extends Component {
               </Button>
             </Link>
           </div>
-        </div>
-        <div className="interdiction-video">
-          <div className="video-button">
-            <Button onClick={this.handleClickOpen}>
-              <Icon fontSize="large" color="primary">
-                play_circle_filled_white
-              </Icon>
-              <span> צפה בסרטון</span>
-            </Button>
-          </div>
-          <Dialog
-            open={this.state.isDialogOpen}
-            onClose={this.handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <div className="dialog">
-              <YouTube video="mYFaghHyMKc" autoplay="0" rel="0" modest="1" />
+          <div className="interdiction-video">
+            <div className="video-button">
+              <Button onClick={this.handleClickOpen}>
+                <Icon fontSize="large" color="primary">
+                  play_circle_filled_white
+                </Icon>
+                <div className="text"> צפה בסרטון</div>
+              </Button>
             </div>
-          </Dialog>
+            <Dialog
+              open={this.state.isDialogOpen}
+              onClose={this.handleClose}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <div className="dialog">
+                <YouTube video="mYFaghHyMKc" autoplay="0" rel="0" modest="1" />
+              </div>
+            </Dialog>
+          </div>
         </div>
       </div>
     );

@@ -1,14 +1,16 @@
 .input-container {
-  width: 50%;
-  margin: auto;
   text-align: center;
+  position: relative;
+  .label {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    z-index: 1;
+    font-size: 12px;
+    padding: 0px 9px;
+  }
   .currency-input {
-    width: 50%;
-    @media only screen and (max-width: 600px) {
-      width: 100%;
-    }
-    @media only screen and (min-width: 600px) {
-      margin: 50px auto;
-    }
+
   }
 }

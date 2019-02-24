@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ApplicationService from '../../services/ApplicationService';
 import QuestionCard from '../../components/questionCard/questionCard';
-import SidePopup from '../../components/SidePopup/SidePopup';
+// import SidePopup from '../../components/SidePopup/SidePopup';
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
+// import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
 import SwipeableViews from 'react-swipeable-views';
 
@@ -40,9 +40,9 @@ export default class ApplicationPage extends Component {
       let questions = this.state.questions;
       questions[this.state.questionNumber].value = question.value;
       this.setState({ questions: questions }, () => {
-        if (isNextQuestion) {
-          this.setNextQuestion();
-        }
+        // if (isNextQuestion) {
+        //   this.setNextQuestion();
+        // }
       });
     }
   };
@@ -51,23 +51,33 @@ export default class ApplicationPage extends Component {
     ApplicationService.sendApplication(this.state.questions);
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+  };
+
   render() {
-    const questionCards = this.state.questions.map((question, index) => {
-      if (
-        index === this.state.questionNumber ||
-        index === this.state.questionNumber - 1
-      ) {
-        return (
-          <QuestionCard
-            key={question._id}
-            onValueChange={this.handelValueChange.bind(this, index)}
-            Question={question}
-          />
-        );
-      } else {
-        return <div />;
+    const questionCards = this.state.questions.map(
+      (question, index, questions) => {
+        // console.log('questions[index-1]:', questions[index - 1]);
+        const lastQuestion = questions[index - 1];
+        if (
+          index === this.state.questionNumber ||
+          index === this.state.questionNumber - 1
+        ) {
+          return (
+            <QuestionCard
+              key={question._id}
+              onValueChange={this.handelValueChange.bind(this, index)}
+              submitInput={this.setNextQuestion}
+              Question={question}
+              lastQuestion={lastQuestion}
+            />
+          );
+        } else {
+          return <div />;
+        }
       }
-    });
+    );
 
     questionCards[this.state.questions.length] = (
       <div className="submit-container">
@@ -102,22 +112,29 @@ export default class ApplicationPage extends Component {
     );
 
     return (
-      <div className="question-card-container">
-        {this.state.questionNumber !== 0 && backButton}
-        <div className="question-card">
-          <SwipeableViews
-            axis="x-reverse"
-            disabled={true}
-            index={this.state.questionNumber}
-            children={questionCards}
-          />
-        </div>
-        {this.state.questionNumber !== this.state.questions.length && (
+      <form
+        className="form-container"
+        onSubmit={this.handleSubmit}
+        noValidate
+        autoComplete="off"
+      >
+        <div className="question-card-container">
+          <div className="question-card">
+            {this.state.questionNumber !== 0 && backButton}
+            <SwipeableViews
+              axis="x-reverse"
+              disabled={true}
+              index={this.state.questionNumber}
+              children={questionCards}
+            />
+          </div>
+          {/* {this.state.questionNumber !== this.state.questions.length && (
           <SidePopup
-            text={this.state.questions[this.state.questionNumber].advice}
+          text={this.state.questions[this.state.questionNumber].advice}
           />
-        )}
-      </div>
+        )} */}
+        </div>
+      </form>
     );
   }
 }

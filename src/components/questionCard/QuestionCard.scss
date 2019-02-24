@@ -4,9 +4,20 @@
     font-size: 30px;
     direction: rtl;
     padding: 15px 10px;
+    @media only screen and (max-width: 600px) {
+      font-size: 23px;
+      padding: 10px;
+    }
+  }
+  .text-2 {
+    text-align: center;
+    font-size: 18px;
+    direction: rtl;
+    padding: 15px 10px;
     height: 50px;
     @media only screen and (max-width: 600px) {
-      font-size: 20px;
+      font-size: 16px;
+      padding: 10px;
     }
   }
 }

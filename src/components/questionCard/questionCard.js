@@ -6,6 +6,7 @@ import TextInput from './TextInput/TextInput';
 import CurrencyInput from './CurrencyInput/CurrencyInput';
 import TimeInput from './TimeInput/TimeInput';
 import YesNoInput from './YesNoInput/YesNoInput';
+import CurrencyPercent from './CurrencyPercent/CurrencyPercent';
 
 export default class QuestionCard extends Component {
   constructor(props) {
@@ -13,18 +14,24 @@ export default class QuestionCard extends Component {
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
-  handleValueChange(e, isNextQuestion) {
+  handleValueChange(e) {
     let question = this.props.Question;
     question.value = e;
-    this.props.onValueChange(question, isNextQuestion); 
+    this.props.onValueChange(question);
   }
-  
+
+  handleSubmitInput = () => {  
+    this.props.submitInput();
+  };
+
   getInputByType(type) {
+
     switch (type) {
       case 'select':
         return (
           <Select
             onselectChange={this.handleValueChange}
+            onClick={this.handleSubmitInput}
             options={this.props.Question.options}
             selected={this.props.Question.value}
           />
@@ -32,8 +39,20 @@ export default class QuestionCard extends Component {
       case 'currency':
         return (
           <CurrencyInput
-            onselectChange={this.handleValueChange}
+            onInputChange={this.handleValueChange}
+            submitInput={this.handleSubmitInput}
             value={this.props.Question.value}
+          />
+        );
+      case 'currencyPercent':
+        return (
+          <CurrencyPercent
+            onInputChange={this.handleValueChange}
+            question={this.props.Question}
+            submitInput={this.handleSubmitInput}
+            baseValue={
+              this.props.lastQuestion ? this.props.lastQuestion.value : null
+            }
           />
         );
       case 'Time':
@@ -60,11 +79,14 @@ export default class QuestionCard extends Component {
   render() {
     const input = this.getInputByType(this.props.Question.inputType);
     return (
-      <div className="card" >
+      <div className="card">
         <div className="text">{this.props.Question.text}</div>
+        {this.props.Question.text2 && (
+          <div className="text-2">{this.props.Question.text2}</div>
+        )}
+
         {input}
       </div>
     );
   }
 }
-

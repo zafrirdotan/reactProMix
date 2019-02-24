@@ -30,10 +30,10 @@ export default class TimeInput extends Component {
   };
 
   handleOnKeyDown = event => {
-    if(event.keyCode == 13){
+    if (event.keyCode === 13) {
       this.props.onselectChange(this.state.value, true);
     }
-  }
+  };
 
   updateState(value) {
     this.setState({ value });
@@ -51,7 +51,6 @@ export default class TimeInput extends Component {
           margin="normal"
           variant="outlined"
           autoComplete="off"
-          inputProps={{ min: this.state.min, max: this.state.max }}
           value={this.state.value}
           onChange={this.handleInputChange}
           onKeyDown={this.handleOnKeyDown}
@@ -60,6 +59,8 @@ export default class TimeInput extends Component {
             startAdornment: (
               <InputAdornment position="start">חודשים</InputAdornment>
             ),
+            min: this.state.min,
+            max: this.state.max,
           }}
         />
         <Slider

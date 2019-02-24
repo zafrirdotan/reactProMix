@@ -20,6 +20,7 @@ function NumberFormatCustom(props) {
           },
         });
       }}
+      allowNegative={false}
       thousandSeparator
       prefix="  &#8362;  "
       allowEmptyFormatting
@@ -28,30 +29,28 @@ function NumberFormatCustom(props) {
 }
 
 export default class CurrencyInput extends Component {
-
   handleInputChange = event => {
-    if(event.keyCode == 13){
-      this.props.onselectChange(event.target.value, true);
-    }else{
-      this.props.onselectChange(event.target.value);
+    this.props.onInputChange(+event.target.value);
+  };
+
+  handleOnKeyUp = event => {
+    if (event.keyCode === 13) {
+      this.props.submitInput();
     }
   };
 
   render() {
     return (
       <div className="input-container">
+        <div className="label"> {this.props.label}</div>
         <TextField
           id="numberInput"
-          root="numberInput"
-          className="currency-input"
-          
-          // type="number"
           margin="normal"
           variant="outlined"
-          // fullWidth="true"
           value={this.props.value}
-          // onChange={this.handleInputChange}
-          onKeyDown={this.handleInputChange}
+          onChange={this.handleInputChange}
+          onKeyUp={this.handleOnKeyUp}
+          type="number"
           InputProps={{
             inputComponent: NumberFormatCustom,
           }}
