@@ -23,19 +23,22 @@ function NumberFormatCustom(props) {
       allowNegative={false}
       thousandSeparator
       prefix="  &#8362;  "
-      allowEmptyFormatting
+      allowEmptyFormatting={false}
     />
   );
 }
 
 export default class CurrencyInput extends Component {
   handleInputChange = event => {
-    this.props.onInputChange(+event.target.value);
+    this.props.onInputChange(+event.target.value || null);
   };
 
   handleOnKeyUp = event => {
     if (event.keyCode === 13) {
       this.props.submitInput();
+    }
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp();
     }
   };
 
@@ -50,7 +53,6 @@ export default class CurrencyInput extends Component {
           value={this.props.value}
           onChange={this.handleInputChange}
           onKeyUp={this.handleOnKeyUp}
-          type="number"
           InputProps={{
             inputComponent: NumberFormatCustom,
           }}

@@ -24,6 +24,7 @@ const questions = [
     text2:
       'השווי מופיע לך בחוזה המכר או נקבע על ידי שמאי בשלושת החודשים האחרונים.',
     type: 'currency',
+    value: 1000000,
     // placeholder: '1000000',
     currency: 'ILS',
   },
@@ -33,6 +34,7 @@ const questions = [
     inputType: 'currencyPercent',
     text: 'מצאת דירה? מצוין! \n מה גובה ההלוואה שאתה צריך להשלמת הרכישה??',
     type: 'currencyPercent',
+    value: 500000,
     // type: 'currency',
     currency: 'ILS',
   },

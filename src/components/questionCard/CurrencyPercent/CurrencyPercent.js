@@ -7,55 +7,73 @@ import './CurrencyPercent.scss';
 
 export default class CurrencyPercent extends Component {
   state = {
-    value: this.props.question.value || 100,
-    percent: 0,
-    baseValue: this.props.baseValue,
+    value: null,
+    percent: null,
+    inputChanged: 'value', // 'value'/ 'percent'
   };
+
   componentWillMount() {
-    this.calculatePercent();
+    const percent = this.calculatePercent(this.props.question.value);
+    this.setState(state => {
+      return { percent, value: this.props.question.value };
+    });
   }
 
-  calculatePercent = () => {
-    let percent = (this.state.value * 100) / this.state.baseValue;
+  calculatePercent = value => {
+    let percent = (value * 100) / this.props.baseValue;
     if (percent % 1 !== 0) {
       percent = percent.toFixed(2);
     }
-    this.setState({
-      percent,
-    });
+    return percent;
   };
-  calculateValue = () => {
-    let value = (this.state.baseValue * this.state.percent) / 100;
+
+  calculateValue = percent => {
+    let value = (this.props.baseValue * percent) / 100;
     if (value % 1 !== 0) {
       value = value.toFixed(2);
     }
-    this.setState({
-      value,
-    });
+    return value;
   };
 
   handleInputChange = value => {
-    this.setState({ value }, () => {
-      this.calculatePercent();
-      this.props.onInputChange(this.state.value);
-    });
+    if (this.state.inputChanged === 'value') {
+      const percent = this.calculatePercent(value);
+      value = value || null;
+      this.setState(state => {
+        return { percent, value };
+      });
+    }
   };
 
   handlePercentInputChange = event => {
-    this.setState({ percent: +event.target.value }, () => {
-      this.calculateValue();
-    });
+    if (this.state.inputChanged === 'percent') {
+      let percent = +event.target.value;
+      const value = this.calculateValue(percent);
+      percent = percent || null;
+      this.setState(state => {
+        return { percent, value };
+      });
+    }
   };
 
   handleSubmitInput = () => {
     this.props.submitInput();
   };
 
-  handleOnKeyUp = event => {
+  handleOnKeyUpValue = event => {
+    this.setState({ inputChanged: 'value' });
+  };
+
+  handleOnKeyUpPercent = event => {
+    this.setState({ inputChanged: 'percent' });
     if (event.keyCode === 13) {
       this.handleSubmitInput();
     }
   };
+
+  componentWillUnmount() {
+    this.props.question.value = this.state.value;
+  }
 
   render() {
     return (
@@ -64,13 +82,13 @@ export default class CurrencyPercent extends Component {
           onInputChange={this.handleInputChange}
           value={this.state.value}
           submitInput={this.handleSubmitInput}
+          onKeyUp={this.handleOnKeyUpValue}
           label="סכום משכנתא"
         />
         <div className="percent-box">
-        <div className="label"> אחוז</div>
+          <div className="label"> אחוז</div>
           <TextField
             id="numberInput"
-            // label="אחוז"
             margin="normal"
             variant="outlined"
             value={this.state.percent}
@@ -78,7 +96,7 @@ export default class CurrencyPercent extends Component {
               inputComponent: PercentFormatCustom,
             }}
             onChange={this.handlePercentInputChange}
-            onKeyDown={this.handleOnKeyUp}
+            onKeyUp={this.handleOnKeyUpPercent}
             type="number"
           />
         </div>
@@ -105,7 +123,6 @@ function PercentFormatCustom(props) {
       }}
       allowNegative={false}
       suffix=" % "
-      allowEmptyFormatting
     />
   );
 }
