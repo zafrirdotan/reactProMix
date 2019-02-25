@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ApplicationService from '../../services/ApplicationService';
 import QuestionCard from '../../components/questionCard/questionCard';
 // import SidePopup from '../../components/SidePopup/SidePopup';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 // import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
@@ -39,11 +41,7 @@ export default class ApplicationPage extends Component {
     if (index === this.state.questionNumber) {
       let questions = this.state.questions;
       questions[this.state.questionNumber].value = question.value;
-      this.setState({ questions: questions }, () => {
-        // if (isNextQuestion) {
-        //   this.setNextQuestion();
-        // }
-      });
+      this.setState({ questions: questions }, () => {});
     }
   };
 
@@ -58,7 +56,6 @@ export default class ApplicationPage extends Component {
   render() {
     const questionCards = this.state.questions.map(
       (question, index, questions) => {
-        // console.log('questions[index-1]:', questions[index - 1]);
         const lastQuestion = questions[index - 1];
         if (
           index === this.state.questionNumber ||
@@ -128,11 +125,6 @@ export default class ApplicationPage extends Component {
               children={questionCards}
             />
           </div>
-          {/* {this.state.questionNumber !== this.state.questions.length && (
-          <SidePopup
-          text={this.state.questions[this.state.questionNumber].advice}
-          />
-        )} */}
         </div>
       </form>
     );

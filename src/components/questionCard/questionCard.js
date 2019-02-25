@@ -7,7 +7,7 @@ import CurrencyInput from './CurrencyInput/CurrencyInput';
 import TimeInput from './TimeInput/TimeInput';
 import YesNoInput from './YesNoInput/YesNoInput';
 import CurrencyPercent from './CurrencyPercent/CurrencyPercent';
-
+import MultiInputs from './MultiInputs/MultiInputs';
 export default class QuestionCard extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +20,17 @@ export default class QuestionCard extends Component {
     this.props.onValueChange(question);
   }
 
-  handleSubmitInput = () => {  
+  handleSubmitInput = () => {
     this.props.submitInput();
   };
 
-  getInputByType(type) {
+  handleMultiInputsChange = (answeredQuestions) => {
+    let question = this.props.Question;
+    question.questions = answeredQuestions;
+    this.props.onValueChange(question);
+  };
 
+  getInputByType(type) {
     switch (type) {
       case 'select':
         return (
@@ -53,6 +58,14 @@ export default class QuestionCard extends Component {
             baseValue={
               this.props.lastQuestion ? this.props.lastQuestion.value : null
             }
+          />
+        );
+      case 'multiInputs':
+        return (
+          <MultiInputs
+            question={this.props.Question}
+            submitInput={this.handleSubmitInput}
+            onInputChange={this.handleMultiInputsChange}
           />
         );
       case 'Time':

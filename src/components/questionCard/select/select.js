@@ -8,8 +8,6 @@ export default class Select extends Component {
     this.props.onClick();
   }
 
-
-
   render() {
     const buttons = this.props.options.map(option => {
       return (

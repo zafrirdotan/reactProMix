@@ -1,32 +1,8 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import NumberFormat from 'react-number-format';
 import './CurrencyInput.scss';
+import CurrencyFormat from '../../../inputFormats/CurrencyFormat';
 
-function NumberFormatCustom(props) {
-  const { inputRef, onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={inputRef}
-      autoComplete="off"
-      type="tel"
-      autoFocus={true}
-      onValueChange={values => {
-        onChange({
-          target: {
-            value: values.value,
-          },
-        });
-      }}
-      allowNegative={false}
-      thousandSeparator
-      prefix="  &#8362;  "
-      allowEmptyFormatting={false}
-    />
-  );
-}
 
 export default class CurrencyInput extends Component {
   handleInputChange = event => {
@@ -50,11 +26,12 @@ export default class CurrencyInput extends Component {
           id="numberInput"
           margin="normal"
           variant="outlined"
+          autoFocus={true}
           value={this.props.value}
           onChange={this.handleInputChange}
           onKeyUp={this.handleOnKeyUp}
           InputProps={{
-            inputComponent: NumberFormatCustom,
+            inputComponent: CurrencyFormat,
           }}
         />
       </div>

@@ -1,0 +1,20 @@
+.input-container {
+  text-align: center;
+  position: relative;
+  .input-box {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+  }
+  .label {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    z-index: 1;
+    font-size: 12px;
+    padding: 0px 9px;
+  }
+  .currency-input {
+  }
+}

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import CurrencyInput from '../CurrencyInput/CurrencyInput';
-import NumberFormat from 'react-number-format';
-
+import PercentFormat from '../../../inputFormats/PercentFormat';
 import './CurrencyPercent.scss';
 
 export default class CurrencyPercent extends Component {
@@ -83,6 +82,7 @@ export default class CurrencyPercent extends Component {
           value={this.state.value}
           submitInput={this.handleSubmitInput}
           onKeyUp={this.handleOnKeyUpValue}
+          autoFocus={true}
           label="סכום משכנתא"
         />
         <div className="percent-box">
@@ -93,7 +93,7 @@ export default class CurrencyPercent extends Component {
             variant="outlined"
             value={this.state.percent}
             InputProps={{
-              inputComponent: PercentFormatCustom,
+              inputComponent: PercentFormat,
             }}
             onChange={this.handlePercentInputChange}
             onKeyUp={this.handleOnKeyUpPercent}
@@ -103,26 +103,4 @@ export default class CurrencyPercent extends Component {
       </div>
     );
   }
-}
-
-function PercentFormatCustom(props) {
-  const { inputRef, onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={inputRef}
-      autoComplete="off"
-      type="tel"
-      onValueChange={values => {
-        onChange({
-          target: {
-            value: values.value,
-          },
-        });
-      }}
-      allowNegative={false}
-      suffix=" % "
-    />
-  );
 }

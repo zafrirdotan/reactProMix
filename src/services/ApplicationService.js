@@ -38,53 +38,87 @@ const questions = [
     // type: 'currency',
     currency: 'ILS',
   },
-
-  // {
-  //   _id: 'q4',
-  //   formName: 'repaymentTime',
-  //   inputType: 'Time',
-  //   text: 'תוך כמה זמן אתה רוצה להחזיר את ההלווה?',
-  //   type: 'time-months',
-  //   advice: '3כדי שבלא בלא ת בלא בלאת בלא',
-  // },
-  // {
-  //   _id: 'q5',
-  //   formName: 'maximumRepaymentTime',
-  //   inputType: 'Time',
-  //   text: 'ומה נראה לך יהיה הזמן המקסימלי?',
-  //   type: 'time-months',
-  // },
-  // {
-  //   _id: 'q6',
-  //   formName: 'fixRepaymentTime',
-  //   inputType: 'yesNo',
-  //   text:
-  //     'האם לקבוע זמן ממוצא לפדיון או להציעה לך את הזמן שיהיה הכי טוב עבורך?',
-  //   type: 'boolean',
-  // },
-  // {
-  //   _id: 'q7',
-  //   formName: 'averageMonthlyRepayment',
-  //   inputType: 'currency',
-  //   text: 'מהו גובה ההחזר החודשי הממוצע שאתה מעוניין בו?',
-  //   type: 'currency',
-  //   currency: 'ILS',
-  // },
-  // {
-  //   _id: 'q8',
-  //   formName: 'maxMonthlyRepayment',
-  //   inputType: 'currency',
-  //   text: 'מסוגל לספוג גידול בהחזר עד סכום של?',
-  //   type: 'currency',
-  //   currency: 'ILS',
-  // },
-  // {
-  //   _id: 'q9',
-  //   formName: 'fixMonthlyRepayment',
-  //   text: 'האם לקבע החזר חודשי?',
-  //   inputType: 'yesNo',
-  //   type: 'boolean',
-  // },
+  {
+    _id: 'q4',
+    formName: 'multiInputs',
+    inputType: 'multiInputs',
+    text: 'מה גבול הזמן שלך?',
+    questions: [
+      {
+        _id: 'iQ1',
+        value: 10,
+        label: 'זמן מקסימלי לפדיון בשנים',
+        formName: 'repaymentTime',
+        type: 'years',
+      },
+      {
+        _id: 'iQ2',
+        value: 10,
+        label: 'זמן ממוצע לפדיון הקרן בשנים',
+        formName: 'maximumRepaymentTime',
+        type: 'years',
+      },
+    ],
+  },
+  {
+    _id: 'q5',
+    formName: 'multiInputs',
+    inputType: 'multiInputs',
+    text: 'את העיקר עברנו…',
+    text2: 'נשארו עוד מספר פרטים קטנים...',
+    questions: [
+      {
+        _id: 'iQ1',
+        value: 0,
+        label: 'ממוצע הוצאות בחודש',
+        formName: 'averageMonthlySpending',
+        type: 'currency',
+      },
+      {
+        _id: 'iQ2',
+        value: 0,
+        label: 'הכנסה נטו של לווה 1',
+        formName: 'averageMonthlyIncomeLoaner1',
+        type: 'currency',
+      },
+      {
+        _id: 'iQ3',
+        value: 0,
+        label: 'הכנסה נטו של לווה 2',
+        formName: 'averageMonthlyIncomeLoaner2',
+        type: 'currency',
+      },
+    ],
+  },
+  {
+    _id: 'q6',
+    formName: 'multiInputs',
+    inputType: 'multiInputs',
+    text: 'מספר פרטים נוספים',
+    questions: [
+      {
+        _id: 'iQ1',
+        value: 35,
+        label: 'גיל הלווה המבוגר',
+        formName: 'ageOldestLoaner',
+        type: 'years',
+      },
+      {
+        _id: 'iQ2',
+        value: 0,
+        label: 'מספר ילדים מתחת לגיל 18',
+        formName: 'numberChildrenUnder18',
+        type: 'number',
+      },
+      {
+        _id: 'iQ3',
+        value: 'נשוי',
+        label: 'סטטוס משפחתי',
+        formName: 'maritalStatus',
+        type: 'text',
+      },
+    ],
+  },
   {
     _id: 'q8',
     formName: 'workStatus',
@@ -142,14 +176,14 @@ function getValueByName(name) {
 }
 
 const sendApplication = answeredQuestions => {
-  let application = formatApplication(answeredQuestions);
-  console.log('application:', application);
+  // let application = formatApplication(answeredQuestions);
+  // console.log('application:', application);
 
-  axios
-    .post(`http://localhost:3000/api/Application`, application)
-    .then(function(response) {
-      console.log(response);
-    });
+  // axios
+  //   .post(`http://localhost:3000/api/Application`, application)
+  //   .then(function(response) {
+  //     console.log(response);
+  //   });
 };
 
 const formatApplication = questions => {
