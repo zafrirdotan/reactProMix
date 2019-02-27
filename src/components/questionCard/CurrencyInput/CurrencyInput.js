@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 import './CurrencyInput.scss';
 import CurrencyFormat from '../../../inputFormats/CurrencyFormat';
 
-
 export default class CurrencyInput extends Component {
   handleInputChange = event => {
     this.props.onInputChange(+event.target.value || null);

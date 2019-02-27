@@ -9,6 +9,7 @@ export default class CurrencyPercent extends Component {
     value: null,
     percent: null,
     inputChanged: 'value', // 'value'/ 'percent'
+    // focusCounter:
   };
 
   componentWillMount() {
@@ -17,6 +18,9 @@ export default class CurrencyPercent extends Component {
       return { percent, value: this.props.question.value };
     });
   }
+
+  // componentDidUpdate(){
+  // }
 
   calculatePercent = value => {
     let percent = (value * 100) / this.props.baseValue;
@@ -80,9 +84,9 @@ export default class CurrencyPercent extends Component {
         <CurrencyInput
           onInputChange={this.handleInputChange}
           value={this.state.value}
+          fieldName={this.props.question.fieldName}
           submitInput={this.handleSubmitInput}
           onKeyUp={this.handleOnKeyUpValue}
-          autoFocus={true}
           label="סכום משכנתא"
         />
         <div className="percent-box">

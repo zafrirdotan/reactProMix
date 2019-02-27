@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
-import NumberFormat from 'react-number-format';
 import CurrencyFormat from '../../../inputFormats/CurrencyFormat';
 import YearsFormat from '../../../inputFormats/YearsFormat';
 
@@ -33,7 +32,7 @@ export default class MultiInputs extends Component {
   }
 
   handleOnKeyUp = (index, event) => {
-    if (event.keyCode === 13 && index === this.state.questions.length - 1) {
+    if (event.keyCode === 13) {
       this.props.submitInput();
     }
   };
@@ -62,4 +61,3 @@ export default class MultiInputs extends Component {
     return <div className="input-container">{inputs}</div>;
   }
 }
-

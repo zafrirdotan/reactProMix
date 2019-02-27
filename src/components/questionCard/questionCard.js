@@ -24,7 +24,7 @@ export default class QuestionCard extends Component {
     this.props.submitInput();
   };
 
-  handleMultiInputsChange = (answeredQuestions) => {
+  handleMultiInputsChange = answeredQuestions => {
     let question = this.props.Question;
     question.questions = answeredQuestions;
     this.props.onValueChange(question);
@@ -55,6 +55,7 @@ export default class QuestionCard extends Component {
             onInputChange={this.handleValueChange}
             question={this.props.Question}
             submitInput={this.handleSubmitInput}
+            setFocus={this.props.setFocus}
             baseValue={
               this.props.lastQuestion ? this.props.lastQuestion.value : null
             }
@@ -93,6 +94,7 @@ export default class QuestionCard extends Component {
     const input = this.getInputByType(this.props.Question.inputType);
     return (
       <div className="card">
+      <div className="mask"></div>
         <div className="text">{this.props.Question.text}</div>
         {this.props.Question.text2 && (
           <div className="text-2">{this.props.Question.text2}</div>

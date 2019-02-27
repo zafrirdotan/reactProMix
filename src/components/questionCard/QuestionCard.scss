@@ -1,4 +1,15 @@
 .card {
+  position: relative;
+  animation-name: enterRight;
+  animation-duration: 0.5s;
+  .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: _1;
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+  }
   .text {
     text-align: center;
     font-size: 30px;
@@ -19,5 +30,25 @@
       font-size: 16px;
       padding: 10px;
     }
+  }
+}
+
+@keyframes enterRight {
+  from {
+    right: -50px;
+  }
+  to {
+    right: 0px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    background-color: white;
+    z-index: 1;
+  }
+  to {
+    background-color: transparent;
+    z-index: -1;
+    
   }
 }

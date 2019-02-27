@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import ApplicationService from '../../services/ApplicationService';
 import QuestionCard from '../../components/questionCard/questionCard';
 // import SidePopup from '../../components/SidePopup/SidePopup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-// import Fab from '@material-ui/core/Fab';
 import Icon from '@material-ui/core/Icon';
-import SwipeableViews from 'react-swipeable-views';
 
 import './Application.scss';
 
@@ -57,22 +53,15 @@ export default class ApplicationPage extends Component {
     const questionCards = this.state.questions.map(
       (question, index, questions) => {
         const lastQuestion = questions[index - 1];
-        if (
-          index === this.state.questionNumber ||
-          index === this.state.questionNumber - 1
-        ) {
-          return (
-            <QuestionCard
-              key={question._id}
-              onValueChange={this.handelValueChange.bind(this, index)}
-              submitInput={this.setNextQuestion}
-              Question={question}
-              lastQuestion={lastQuestion}
-            />
-          );
-        } else {
-          return <div />;
-        }
+        return (
+          <QuestionCard
+            key={question._id}
+            onValueChange={this.handelValueChange.bind(this, index)}
+            submitInput={this.setNextQuestion}
+            Question={question}
+            lastQuestion={lastQuestion}
+          />
+        );
       }
     );
 
@@ -99,8 +88,6 @@ export default class ApplicationPage extends Component {
         size="medium"
         variant="outlined"
         color="primary"
-        // disableFocusRipple="true"
-        // disableRipple="true"
       >
         <Icon size="medium" color="primary">
           arrow_forward
@@ -118,12 +105,7 @@ export default class ApplicationPage extends Component {
         <div className="question-card-container">
           <div className="question-card">
             {this.state.questionNumber !== 0 && backButton}
-            <SwipeableViews
-              axis="x-reverse"
-              disabled={true}
-              index={this.state.questionNumber}
-              children={questionCards}
-            />
+            {questionCards[this.state.questionNumber]}
           </div>
         </div>
       </form>
