@@ -8,6 +8,8 @@ import TimeInput from './TimeInput/TimeInput';
 import YesNoInput from './YesNoInput/YesNoInput';
 import CurrencyPercent from './CurrencyPercent/CurrencyPercent';
 import MultiInputs from './MultiInputs/MultiInputs';
+import RiskGauge from './RiskGauge/RiskGauge';
+
 export default class QuestionCard extends Component {
   constructor(props) {
     super(props);
@@ -85,6 +87,14 @@ export default class QuestionCard extends Component {
         );
       case 'text':
         return <TextInput />;
+
+      case 'RiskGauge':
+        return (
+          <RiskGauge
+            value={this.props.Question.value}
+            onselectChange={this.handleValueChange}
+          />
+        );
       default:
         return;
     }
@@ -92,15 +102,20 @@ export default class QuestionCard extends Component {
 
   render() {
     const input = this.getInputByType(this.props.Question.inputType);
+    const isWidthFull = this.props.Question.inputType === 'RiskGauge';
     return (
       <div className="card">
-      <div className="mask"></div>
+        <div className="mask" />
         <div className="text">{this.props.Question.text}</div>
         {this.props.Question.text2 && (
           <div className="text-2">{this.props.Question.text2}</div>
         )}
-
-        {input}
+        <div
+          className="card-input-container"
+          style={isWidthFull ? { width: '100%' } : {}}
+        >
+          {input}
+        </div>
       </div>
     );
   }

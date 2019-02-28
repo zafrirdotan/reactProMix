@@ -81,14 +81,16 @@ export default class CurrencyPercent extends Component {
   render() {
     return (
       <div className="currency-percent-box">
-        <CurrencyInput
-          onInputChange={this.handleInputChange}
-          value={this.state.value}
-          fieldName={this.props.question.fieldName}
-          submitInput={this.handleSubmitInput}
-          onKeyUp={this.handleOnKeyUpValue}
-          label="סכום משכנתא"
-        />
+        <div className="currency-box">
+          <CurrencyInput
+            onInputChange={this.handleInputChange}
+            value={this.state.value}
+            fieldName={this.props.question.fieldName}
+            submitInput={this.handleSubmitInput}
+            onKeyUp={this.handleOnKeyUpValue}
+            label="סכום משכנתא"
+          />
+        </div>
         <div className="percent-box">
           <div className="label"> אחוז</div>
           <TextField

@@ -14,6 +14,7 @@ const questions = [
       { name: 'דירה להשקעה', key: 3 },
       { name: 'דירה במחיר למשתכן', key: 4 },
     ],
+    information: '',
   },
 
   {
@@ -35,7 +36,6 @@ const questions = [
     text: 'מצאת דירה? מצוין! \n מה גובה ההלוואה שאתה צריך להשלמת הרכישה??',
     type: 'currencyPercent',
     value: 500000,
-    // type: 'currency',
     currency: 'ILS',
   },
   {
@@ -76,14 +76,14 @@ const questions = [
       {
         _id: 'iQ2',
         value: 0,
-        label: 'הכנסה נטו של לווה 1',
+        label: 'הכנסה חודשית נטו של לווה 1',
         filedName: 'averageMonthlyIncomeLoaner1',
         type: 'currency',
       },
       {
         _id: 'iQ3',
         value: 0,
-        label: 'הכנסה נטו של לווה 2',
+        label: 'הכנסה חודשית נטו של לווה 2',
         filedName: 'averageMonthlyIncomeLoaner2',
         type: 'currency',
       },
@@ -151,8 +151,18 @@ const questions = [
       { name: 'דירה אחת', key: 0 },
       { name: 'שתי דירות', key: 1 },
       { name: 'שלושה דירות ומעלה', key: 2 },
-      { name: 'אחר', key: 3 },
+      { name: 'אין ברשותי נכסים נוספים', key: 3 },
+      { name: 'אחר', key: 4 },
     ],
+  },
+  {
+    _id: 'q11',
+    filedName: 'riskLevel',
+    text: 'בחר רמת סיכון',
+    inputType: 'RiskGauge',
+    dataType: 'number',
+    text2:
+      'אנו רוצים ליצור עבורך את תמהיל המשכנתא הטוב ביותר… לשם כך חשוב לנו שתבחר את רמת הסיכון שברצונך לקחת.',
   },
 ];
 

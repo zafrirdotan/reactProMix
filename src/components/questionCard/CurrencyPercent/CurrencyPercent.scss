@@ -3,8 +3,13 @@
   display: flex;
   justify-content: center;
   flex-direction: row-reverse;
+  width: 100%;
+  .currency-box{
+    width: 70%;
+    margin-left: 5px;
+  }
   .percent-box {
-    width: 85px;
+    width: 30%;
     position: relative;
     .label {
       position: absolute;
@@ -17,3 +22,4 @@
     }
   }
 }
+

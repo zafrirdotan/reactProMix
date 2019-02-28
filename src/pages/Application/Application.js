@@ -4,7 +4,6 @@ import QuestionCard from '../../components/questionCard/questionCard';
 // import SidePopup from '../../components/SidePopup/SidePopup';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-
 import './Application.scss';
 
 export default class ApplicationPage extends Component {
@@ -65,17 +64,17 @@ export default class ApplicationPage extends Component {
       }
     );
 
-    questionCards[this.state.questions.length] = (
+    const submitButton = (
       <div className="submit-container">
         <div className="submit-box">
-          <h1>שלח את את השאלון</h1>
+          <h4>שלח את את השאלון</h4>
           <Button
             className="submit-button"
             variant="outlined"
             color="primary"
             onClick={this.submitApplication}
           >
-            בצע
+            התחל חישוב
           </Button>
         </div>
       </div>
@@ -106,6 +105,8 @@ export default class ApplicationPage extends Component {
           <div className="question-card">
             {this.state.questionNumber !== 0 && backButton}
             {questionCards[this.state.questionNumber]}
+            {this.state.questionNumber === questionCards.length - 1 &&
+              submitButton}
           </div>
         </div>
       </form>

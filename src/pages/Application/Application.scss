@@ -15,12 +15,11 @@
     }
     
     .submit-container {
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: relative;
+      top: -146px;
       .submit-box {
         text-align: center;
+
         .submit-button {
           width: 50%;
         }

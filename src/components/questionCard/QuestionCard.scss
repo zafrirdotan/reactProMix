@@ -6,7 +6,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: _1;
+    z-index: 0;
     animation-name: fadeIn;
     animation-duration: 1.5s;
   }
@@ -25,10 +25,17 @@
     font-size: 18px;
     direction: rtl;
     padding: 15px 10px;
-    height: 50px;
+    // height: 50px;
     @media only screen and (max-width: 600px) {
       font-size: 16px;
       padding: 10px;
+    }
+  }
+  .card-input-container {
+    width: 60%;
+    margin: auto;
+    @media only screen and (max-width: 600px) {
+      width: 80%;
     }
   }
 }
@@ -49,6 +56,5 @@
   to {
     background-color: transparent;
     z-index: -1;
-    
   }
 }

@@ -1,20 +1,22 @@
-.input-container {
+.multi-input-container {
   text-align: center;
   position: relative;
-  .input-box {
+  .multi-input-box {
     position: relative;
-    width: fit-content;
     margin: auto;
   }
-  .label {
+  .multi-label {
     position: absolute;
-    top: 8px;
+    top: 7px;
     right: 8px;
     background: white;
     z-index: 1;
     font-size: 12px;
     padding: 0px 9px;
   }
-  .currency-input {
+  .multi-input-style {
+    font-size: 20px;
+    // padding: 15px 10px;
+    width: 100%;
   }
 }

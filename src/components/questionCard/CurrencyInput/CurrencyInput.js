@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 import './CurrencyInput.scss';
 import CurrencyFormat from '../../../inputFormats/CurrencyFormat';
 
-export default class CurrencyInput extends Component {
+class CurrencyInput extends Component {
   handleInputChange = event => {
     this.props.onInputChange(+event.target.value || null);
   };
@@ -18,12 +19,16 @@ export default class CurrencyInput extends Component {
   };
 
   render() {
+    const { classes } = this.props;
+    console.log('classes:', classes);
+
     return (
       <div className="input-container">
         <div className="label"> {this.props.label}</div>
         <TextField
           id="numberInput"
           margin="normal"
+          className={classes.textField}
           variant="outlined"
           autoFocus={true}
           value={this.props.value}
@@ -37,3 +42,10 @@ export default class CurrencyInput extends Component {
     );
   }
 }
+const styles = theme => ({
+  textField: {
+    // 'font-size': 50,
+    color: 'blue',
+  },
+});
+export default withStyles(styles)(CurrencyInput);

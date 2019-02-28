@@ -40,9 +40,10 @@ export default class MultiInputs extends Component {
   render() {
     const inputs = this.state.questions.map((question, index) => {
       return (
-        <div className="input-box" key={question._id}>
-          <div className="label"> {question.label}</div>
+        <div className="multi-input-box" key={question._id}>
+          <div className="multi-label"> {question.label}</div>
           <TextField
+            className="multi-input-style"
             id={question._id}
             margin="normal"
             variant="outlined"
@@ -58,6 +59,6 @@ export default class MultiInputs extends Component {
         </div>
       );
     });
-    return <div className="input-container">{inputs}</div>;
+    return <div className="multi-input-container">{inputs}</div>;
   }
 }

@@ -11,6 +11,7 @@ function YearsFormat(props) {
       getInputRef={inputRef}
       autoComplete="off"
       type="tel"
+      className="input-style"
       onValueChange={values => {
         onChange({
           target: {
