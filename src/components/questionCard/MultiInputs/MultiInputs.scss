@@ -4,6 +4,12 @@
   .multi-input-box {
     position: relative;
     margin: auto;
+    .multi-input-style {
+      font-size: 20px;
+      width: 100%;
+      direction: rtl;
+
+    }
   }
   .multi-label {
     position: absolute;
@@ -13,10 +19,5 @@
     z-index: 1;
     font-size: 12px;
     padding: 0px 9px;
-  }
-  .multi-input-style {
-    font-size: 20px;
-    // padding: 15px 10px;
-    width: 100%;
   }
 }

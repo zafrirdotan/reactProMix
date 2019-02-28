@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import CurrencyFormat from '../../../inputFormats/CurrencyFormat';
 import YearsFormat from '../../../inputFormats/YearsFormat';
+import NumberCustomFormat from '../../../inputFormats/NumberCustomFormat';
+
 
 import './MultiInputs.scss';
 
@@ -9,7 +11,7 @@ const InputFormatMap = {
   currency: CurrencyFormat,
   years: YearsFormat,
   text: undefined,
-  number: undefined,
+  number: NumberCustomFormat,
 };
 
 export default class MultiInputs extends Component {
